@@ -1,0 +1,1 @@
+knife bootstrap 172.104.5.131 --ssh-port 22 --ssh-user hendy --sudo --identity-file ~/.ssh/id_rsa --node-name linode2 --run-list 'recipe[myhttpd]' 

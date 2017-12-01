@@ -1,0 +1,25 @@
+# listen *:8080
+  ServerName <%= node['hostname'] %>
+  ServerAdmin 'hendy@hendersonhood.com'
+
+  DocumentRoot <%= node['web']['document_root'] %>
+  <Directory "/">
+          Options FollowSymLinks
+          AllowOverride None
+  </Directory>
+  <Directory <%= node['web']['document_root'] %> >
+          Options Indexes FollowSymLinks MultiViews
+          AllowOverride None
+          Require all granted
+  </Directory>
+
+#  ErrorLog /var/log/httpd-default/error.log
+#  ErrorLog  node['web']['log_dir']
+# LogLevel warn
+
+  CustomLog /var/log/httpd-default/access.log combined
+  ServerSignature Off
+
+  AddType application/x-httpd-php .php
+  AddType application/x-httpd-php-source .phps
+  DirectoryIndex index.php index.html

@@ -1,0 +1,19 @@
+---
+driver:
+  name: ssh
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: centos7
+    driver:
+      hostname: 192.168.58.233 
+      username: vagrant
+      password: vagrant
+
+suites:
+  - name: default
+    run_list:
+     - recipe[myhttpd::default]
+    attributes:
